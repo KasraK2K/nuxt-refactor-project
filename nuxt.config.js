@@ -79,8 +79,8 @@ export default {
     },
     customVariables: ['~/assets/scss/variables.scss'],
     theme: {
-      dark: true,
-      default: 'dark',
+      dark: false,
+      default: 'light',
       disable: false,
       themes: {
         light: {

@@ -9,6 +9,19 @@
       right
       app
     >
+      <template v-slot:prepend>
+        <v-list-item class="disable-hover px-2">
+          <v-list-item-avatar>
+            <img src="https://avatars.githubusercontent.com/u/30779339?v=4" />
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>کسری کرمی</v-list-item-title>
+            <v-list-item-subtitle class="pt-1">آنلاین</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+      <v-divider></v-divider>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -28,7 +41,7 @@
     </v-navigation-drawer>
 
     <!-- Topbar Menu -->
-    <v-app-bar :clipped-right="clipped" fixed app>
+    <v-app-bar class="elevation-0" :clipped-right="clipped" fixed app>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'left' : 'right'}` }}</v-icon>
       </v-btn>
@@ -77,24 +90,29 @@ export default {
   data() {
     return {
       clipped: false,
-      drawer: false,
+      drawer: true,
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-home',
           title: 'صفحه اصلی',
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          icon: 'mdi-puzzle',
+          title: 'الگوهای طراحی',
+          to: { name: 'pattern' },
+        },
+        {
+          icon: 'mdi-content-cut',
+          title: 'بازسازی',
+          to: { name: 'refactor' },
         },
       ],
       miniVariant: false,
       left: true,
       leftDrawer: false,
-      title: 'Vuetify.js',
+      title: 'نام برنامه',
     }
   },
 }
