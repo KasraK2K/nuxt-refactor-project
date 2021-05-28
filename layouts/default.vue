@@ -1,10 +1,12 @@
 <template>
   <v-app dark>
+    <!-- Right Menu -->
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
       fixed
+      right
       app
     >
       <v-list>
@@ -24,11 +26,13 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+    <!-- Topbar Menu -->
+    <v-app-bar :clipped-right="clipped" fixed app>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
+        <v-icon>mdi-{{ `chevron-${miniVariant ? 'left' : 'right'}` }}</v-icon>
       </v-btn>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon @click.stop="clipped = !clipped">
         <v-icon>mdi-application</v-icon>
       </v-btn>
@@ -37,18 +41,22 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
+      <v-btn icon @click.stop="leftDrawer = !leftDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
+
+    <!-- Main -->
     <v-main>
       <v-container>
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
+
+    <!-- Left Menu -->
+    <v-navigation-drawer v-model="leftDrawer" :left="left" temporary fixed>
       <v-list>
-        <v-list-item @click.native="right = !right">
+        <v-list-item @click.native="left = !left">
           <v-list-item-action>
             <v-icon light> mdi-repeat </v-icon>
           </v-list-item-action>
@@ -56,6 +64,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    <!-- footer -->
     <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
@@ -72,7 +82,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'صفحه اصلی',
           to: '/',
         },
         {
@@ -82,8 +92,8 @@ export default {
         },
       ],
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
+      left: true,
+      leftDrawer: false,
       title: 'Vuetify.js',
     }
   },
