@@ -9,6 +9,7 @@ solution: solution.png
 comic: strategy-comic-1-en.png
 slug: strategy
 thumbnail: strategy-mini.png
+type: behavioral
 ---
 
 
