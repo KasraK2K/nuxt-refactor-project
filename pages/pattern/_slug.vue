@@ -4,11 +4,15 @@
   </article>
 </template>
 
-<script>
-export default {
-  async asyncData({ $content, params }) {
-    const pattern = await $content('pattern', params.slug).fetch()
-    return { pattern }
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  asyncData: async ({ app, params }) => {
+    const pattern = await app
+      .$content(`pattern/${params.folder}`, params.slug)
+      .fetch();
+    return { pattern };
   },
-}
+});
 </script>

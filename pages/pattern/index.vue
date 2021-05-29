@@ -3,72 +3,118 @@
     <!-- <h1>دیزاین پترن</h1> -->
     
     <v-row>
-      <!-- creational pattern -->
+      <!-- ------------------------------------------------------------------------ */
+      /*                             Creational Pattern                             */
+      /* ------------------------------------------------------------------------- -->
       <v-col>
         <v-row no-gutters>
-          <v-col xs="12" sm="6" md="3" v-for="bPattern in bPatterns" :key="bPattern.slug">
-            <v-card outlined tile>
-              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: bPattern.slug } }" class="black--text">
+          <v-col xs="12" sm="6" md="3" v-for="cPattern in cPatterns" :key="cPattern.slug">
+            <v-card class="border-hover" outlined tile>
+              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: cPattern.slug, folder: 'creational' } }">
                 <article>
                   <div class="pa-3 pb-0">
-                    <v-img :src="require(`~/assets/images/pattern/${bPattern.slug}/${bPattern.thumbnail}`)" />
+                    <v-img :src="require(`~/assets/images/pattern/${cPattern.slug}/${cPattern.thumbnail}`)" />
                   </div>
-                  <v-card-title class="justify-center">{{ bPattern.title }}</v-card-title>
+                  <v-card-title class="justify-center">
+                    <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
+                      {{ cPattern.title }}
+                    </small>
+                  </v-card-title>
                 </article>
               </nuxt-link>
             </v-card>
           </v-col>
         </v-row>
       </v-col>
+      <!-- ----------------------------------------------------------------------- -->
 
-      <!-- structural pattern -->
+      <!-- ------------------------------------------------------------------------ */
+      /*                             Structural Pattern                             */
+      /* ------------------------------------------------------------------------- -->
       <v-col>
         <v-row no-gutters>
-          <v-col xs="12" sm="6" md="3" v-for="bPattern in bPatterns" :key="bPattern.slug">
-            <v-card outlined tile>
-              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: bPattern.slug } }" class="black--text">
+          <v-col xs="12" sm="6" md="3" v-for="sPattern in sPatterns" :key="sPattern.slug">
+            <v-card class="border-hover" outlined tile>
+              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: sPattern.slug, folder: 'structural' } }">
                 <article>
                   <div class="pa-3 pb-0">
-                    <v-img :src="require(`~/assets/images/pattern/${bPattern.slug}/${bPattern.thumbnail}`)" />
+                    <v-img :src="require(`~/assets/images/pattern/${sPattern.slug}/${sPattern.thumbnail}`)" />
                   </div>
-                  <v-card-title class="justify-center">{{ bPattern.title }}</v-card-title>
+                  <v-card-title class="justify-center">
+                    <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
+                      {{ sPattern.title }}
+                    </small>
+                  </v-card-title>
                 </article>
               </nuxt-link>
             </v-card>
           </v-col>
         </v-row>
       </v-col>
+      <!-- ----------------------------------------------------------------------- -->
 
-      <!-- structural pattern -->
+      <!-- ------------------------------------------------------------------------ */
+      /*                             Behavioral Pattern                             */
+      /* ------------------------------------------------------------------------- -->
       <v-col>
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="bPattern in bPatterns" :key="bPattern.slug">
-            <v-card outlined tile>
-              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: bPattern.slug } }" class="black--text">
+            <v-card class="border-hover" outlined tile>
+              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: bPattern.slug, folder: 'behavioral' } }">
                 <article>
                   <div class="pa-3 pb-0">
                     <v-img :src="require(`~/assets/images/pattern/${bPattern.slug}/${bPattern.thumbnail}`)" />
                   </div>
-                  <v-card-title class="justify-center">{{ bPattern.title }}</v-card-title>
+                  <v-card-title class="justify-center">
+                    <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
+                      {{ bPattern.title }}
+                    </small>
+                  </v-card-title>
                 </article>
               </nuxt-link>
             </v-card>
           </v-col>
         </v-row>
       </v-col>
+      <!-- ----------------------------------------------------------------------- -->
 
     </v-row>
   </v-container>
 </template>
 
-<script>
-export default {
-  async asyncData({ $content, params }) {
-    const bPatterns = await $content('pattern/behavioral', params.slug)
-      .only(['title', 'thumbnail', 'slug'])
-      .sortBy('createdAt', 'DESC')
-      .fetch()
-    return { bPatterns }
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  asyncData: async ({ app, params }) => {
+    const cPatterns = await app
+      .$content("pattern/creational", params.slug)
+      .only(["title", "thumbnail", "slug"])
+      .sortBy("createdAt", "desc")
+      .fetch();
+
+    const sPatterns = await app
+      .$content("pattern/structural", params.slug)
+      .only(["title", "thumbnail", "slug"])
+      .sortBy("createdAt", "desc")
+      .fetch();
+
+    const bPatterns = await app
+      .$content("pattern/behavioral", params.slug)
+      .only(["title", "thumbnail", "slug"])
+      .sortBy("createdAt", "desc")
+      .fetch();
+
+    return { bPatterns, cPatterns, sPatterns };
   },
-}
+});
 </script>
+
+<style lang="scss" scoped>
+.border-hover {
+  border: solid 1px #f5f5f5;
+  &:hover {
+    border: solid 1px #ea6153;
+  }
+}
+</style>
