@@ -10,10 +10,10 @@
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="cPattern in cPatterns" :key="cPattern.slug">
             <v-card class="border-hover" outlined tile>
-              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: cPattern.slug, folder: 'creational' } }">
+              <nuxt-link :to="{ name: 'pattern-type-slug', params: { slug: cPattern.slug, type: cPattern.type } }">
                 <article>
                   <div class="pa-3 pb-0">
-                    <v-img :src="require(`~/assets/images/pattern/${cPattern.slug}/${cPattern.thumbnail}`)" />
+                    <v-img :src="`/images/pattern/${cPattern.slug}/${cPattern.thumbnail}`" />
                   </div>
                   <v-card-title class="justify-center">
                     <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
@@ -35,10 +35,10 @@
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="sPattern in sPatterns" :key="sPattern.slug">
             <v-card class="border-hover" outlined tile>
-              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: sPattern.slug, folder: 'structural' } }">
+              <nuxt-link :to="{ name: 'pattern-type-slug', params: { slug: sPattern.slug, type: sPattern.type } }">
                 <article>
                   <div class="pa-3 pb-0">
-                    <v-img :src="require(`~/assets/images/pattern/${sPattern.slug}/${sPattern.thumbnail}`)" />
+                    <v-img :src="`/images/pattern/${sPattern.slug}/${sPattern.thumbnail}`" />
                   </div>
                   <v-card-title class="justify-center">
                     <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
@@ -60,10 +60,10 @@
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="bPattern in bPatterns" :key="bPattern.slug">
             <v-card class="border-hover" outlined tile>
-              <nuxt-link :to="{ name: 'pattern-slug', params: { slug: bPattern.slug, folder: 'behavioral' } }">
+              <nuxt-link :to="{ name: 'pattern-type-slug', params: { slug: bPattern.slug, type: bPattern.type } }">
                 <article>
                   <div class="pa-3 pb-0">
-                    <v-img :src="require(`~/assets/images/pattern/${bPattern.slug}/${bPattern.thumbnail}`)" />
+                    <v-img :src="`/images/pattern/${bPattern.slug}/${bPattern.thumbnail}`" />
                   </div>
                   <v-card-title class="justify-center">
                     <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
@@ -89,19 +89,19 @@ export default Vue.extend({
   asyncData: async ({ app, params }) => {
     const cPatterns = await app
       .$content("pattern/creational", params.slug)
-      .only(["title", "thumbnail", "slug"])
+      .only(["title", "thumbnail", "slug", "type"])
       .sortBy("createdAt", "desc")
       .fetch();
 
     const sPatterns = await app
       .$content("pattern/structural", params.slug)
-      .only(["title", "thumbnail", "slug"])
+      .only(["title", "thumbnail", "slug", "type"])
       .sortBy("createdAt", "desc")
       .fetch();
 
     const bPatterns = await app
       .$content("pattern/behavioral", params.slug)
-      .only(["title", "thumbnail", "slug"])
+      .only(["title", "thumbnail", "slug", "type"])
       .sortBy("createdAt", "desc")
       .fetch();
 
