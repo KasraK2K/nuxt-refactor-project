@@ -10,7 +10,7 @@
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="cPattern in cPatterns" :key="cPattern.slug">
             <v-card class="border-hover" outlined tile>
-              <nuxt-link :to="{ name: 'pattern-type-slug', params: { slug: cPattern.slug, type: cPattern.type } }">
+              <nuxt-link :to="{ name: 'pattern-folder-slug', params: { slug: cPattern.slug, folder: cPattern.folder } }">
                 <article>
                   <div class="pa-3 pb-0">
                     <v-img :src="`/images/pattern/${cPattern.slug}/${cPattern.thumbnail}`" />
@@ -35,7 +35,7 @@
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="sPattern in sPatterns" :key="sPattern.slug">
             <v-card class="border-hover" outlined tile>
-              <nuxt-link :to="{ name: 'pattern-type-slug', params: { slug: sPattern.slug, type: sPattern.type } }">
+              <nuxt-link :to="{ name: 'pattern-folder-slug', params: { slug: sPattern.slug, folder: sPattern.folder } }">
                 <article>
                   <div class="pa-3 pb-0">
                     <v-img :src="`/images/pattern/${sPattern.slug}/${sPattern.thumbnail}`" />
@@ -60,7 +60,7 @@
         <v-row no-gutters>
           <v-col xs="12" sm="6" md="3" v-for="bPattern in bPatterns" :key="bPattern.slug">
             <v-card class="border-hover" outlined tile>
-              <nuxt-link :to="{ name: 'pattern-type-slug', params: { slug: bPattern.slug, type: bPattern.type } }">
+              <nuxt-link :to="{ name: 'pattern-folder-slug', params: { slug: bPattern.slug, folder: bPattern.folder } }">
                 <article>
                   <div class="pa-3 pb-0">
                     <v-img :src="`/images/pattern/${bPattern.slug}/${bPattern.thumbnail}`" />
@@ -89,19 +89,19 @@ export default Vue.extend({
   asyncData: async ({ app, params }) => {
     const cPatterns = await app
       .$content("pattern/creational", params.slug)
-      .only(["title", "thumbnail", "slug", "type"])
+      .only(["title", "thumbnail", "slug", "folder"])
       .sortBy("createdAt", "desc")
       .fetch();
 
     const sPatterns = await app
       .$content("pattern/structural", params.slug)
-      .only(["title", "thumbnail", "slug", "type"])
+      .only(["title", "thumbnail", "slug", "folder"])
       .sortBy("createdAt", "desc")
       .fetch();
 
     const bPatterns = await app
       .$content("pattern/behavioral", params.slug)
-      .only(["title", "thumbnail", "slug", "type"])
+      .only(["title", "thumbnail", "slug", "folder"])
       .sortBy("createdAt", "desc")
       .fetch();
 
