@@ -10,14 +10,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { mapState } from 'vuex'
+import Vue from "vue";
 
 export default Vue.extend({
   data(): Record<string, unknown> {
     return {
-      appName: 'نام برنامه',
-    }
+      appName: "نام برنامه",
+    };
   },
-})
+});
 </script>

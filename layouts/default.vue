@@ -1,15 +1,16 @@
 <template>
-  <v-app dark>
+  <v-app>
     <!-- Right Menu -->
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
+      dark
       fixed
       right
       app
     >
-      <template v-slot:prepend>
+      <template #prepend>
         <v-list-item class="disable-hover px-2">
           <v-list-item-avatar>
             <img src="https://avatars.githubusercontent.com/u/30779339?v=4" />
@@ -30,7 +31,7 @@
           router
           exact
         >
-          <v-list-item-action>
+          <v-list-item-action class="ml-2">
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
@@ -41,9 +42,9 @@
     </v-navigation-drawer>
 
     <!-- Topbar Menu -->
-    <v-app-bar class="elevation-0" :clipped-right="clipped" fixed app>
+    <v-app-bar class="elevation-0" :clipped-right="clipped" fixed app dark>
       <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'left' : 'right'}` }}</v-icon>
+        <v-icon>mdi-{{ `chevron-${miniVariant ? "left" : "right"}` }}</v-icon>
       </v-btn>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon @click.stop="clipped = !clipped">
@@ -53,10 +54,6 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="leftDrawer = !leftDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <!-- Main -->
@@ -65,18 +62,6 @@
         <nuxt />
       </v-container>
     </v-main>
-
-    <!-- Left Menu -->
-    <v-navigation-drawer v-model="leftDrawer" :left="left" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="left = !left">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
 
     <!-- footer -->
     <v-footer :absolute="!fixed" app>
@@ -94,26 +79,26 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-home',
-          title: 'صفحه اصلی',
-          to: '/',
+          icon: "mdi-home",
+          title: "صفحه اصلی",
+          to: "/",
         },
         {
-          icon: 'mdi-puzzle',
-          title: 'الگوهای طراحی',
-          to: { name: 'pattern' },
+          icon: "mdi-puzzle",
+          title: "الگوهای طراحی",
+          to: { name: "design-pattern" },
         },
         {
-          icon: 'mdi-content-cut',
-          title: 'بازسازی',
-          to: { name: 'refactor' },
+          icon: "mdi-content-cut",
+          title: "بازسازی",
+          to: { name: "refactor" },
         },
       ],
       miniVariant: false,
       left: true,
       leftDrawer: false,
-      title: 'نام برنامه',
-    }
+      title: "نام برنامه",
+    };
   },
-}
+};
 </script>
