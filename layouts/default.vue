@@ -24,10 +24,15 @@
       </template>
       <v-divider></v-divider>
       <v-list>
+        <!-- ------------------------------------------------------------------------ */
+        /*                                 single menu                                */
+        /* ------------------------------------------------------------------------- -->
         <v-list-item
           v-for="(item, i) in items"
+          v-if="!item.submenus"
           :key="i"
           :to="item.to"
+          nuxt
           router
           exact
         >
@@ -38,6 +43,48 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <!-- ----------------------------------------------------------------------- -->
+
+        <!-- ------------------------------------------------------------------------ */
+        /*                                multiple menu                               */
+        /* ------------------------------------------------------------------------- -->
+        <v-list-group
+          v-for="(item, i) in items"
+          v-if="item.submenus"
+          :key="i"
+          active-class="blue--text"
+          :append-icon="false"
+        >
+          <template #activator>
+            <v-list-item-action class="ml-2" @click="routeTo(item.to)">
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title
+                @click="routeTo(item.to)"
+                v-text="item.title"
+              />
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="(submenu, j) in item.submenus"
+            :key="j"
+            :to="submenu.to"
+            nuxt
+            router
+            exact
+          >
+            <v-list-item-icon v-if="submenu.icon" class="ml-0 mr-5">
+              <v-icon>{{ submenu.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title
+              :class="[!submenu.icon ? 'mr-5' : 'mr-2']"
+              v-text="submenu.title"
+            />
+          </v-list-item>
+        </v-list-group>
+        <!-- ----------------------------------------------------------------------- -->
       </v-list>
     </v-navigation-drawer>
 
@@ -70,35 +117,47 @@
   </v-app>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      clipped: false,
-      drawer: true,
-      fixed: false,
-      items: [
-        {
-          icon: "mdi-home",
-          title: "صفحه اصلی",
-          to: "/",
-        },
-        {
-          icon: "mdi-puzzle",
-          title: "الگوهای طراحی",
-          to: { name: "design-pattern" },
-        },
-        {
-          icon: "mdi-content-cut",
-          title: "بازسازی",
-          to: { name: "refactor" },
-        },
-      ],
-      miniVariant: false,
-      left: true,
-      leftDrawer: false,
-      title: "نام برنامه",
-    };
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  data: () => ({
+    clipped: false,
+    drawer: true,
+    fixed: false,
+    items: [
+      {
+        icon: "mdi-home",
+        title: "صفحه اصلی",
+        to: "/",
+      },
+      {
+        icon: "mdi-puzzle",
+        title: "الگوهای طراحی",
+        to: { name: "design-pattern" },
+        submenus: [
+          {
+            icon: "mdi-content-cut",
+            title: "کاتالوگ",
+            to: { name: "design-pattern-catalog" },
+          },
+        ],
+      },
+      {
+        icon: "mdi-content-cut",
+        title: "بازسازی",
+        to: { name: "refactor" },
+      },
+    ],
+    miniVariant: false,
+    left: true,
+    leftDrawer: false,
+    title: "نام برنامه",
+  }),
+  methods: {
+    routeTo(path: Record<string, unknown>): void {
+      this.$router.push(path);
+    },
   },
-};
+});
 </script>
