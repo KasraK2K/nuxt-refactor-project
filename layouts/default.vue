@@ -3,12 +3,12 @@
     <!-- Right Menu -->
     <v-navigation-drawer
       v-model="drawer"
-      v-resize="onResize"
       :mini-variant="miniVariant"
       :clipped="clipped"
       dark
       fixed
-      right
+      :right="!isMobile"
+      :bottom="isMobile"
       app
     >
       <template #prepend>
@@ -113,6 +113,7 @@ export default Vue.extend({
   data: () => ({
     clipped: false,
     drawer: true,
+    isMobile: false,
     fixed: false,
     items: [
       {
@@ -144,14 +145,14 @@ export default Vue.extend({
     title: "نام برنامه",
   }),
   beforeMount() {
-    if (document.body.clientWidth < 1264) this.drawer = false;
+    if (document.body.clientWidth < 1264) {
+      this.drawer = false;
+      this.isMobile = true;
+    }
   },
   methods: {
     routeTo(path: Record<string, unknown>): void {
       this.$router.push(path);
-    },
-    onResize() {
-      if (document.body.clientWidth < 1264) this.drawer = false;
     },
   },
 });
