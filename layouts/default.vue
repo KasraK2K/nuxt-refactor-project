@@ -24,67 +24,59 @@
       </template>
       <v-divider></v-divider>
       <v-list>
-        <!-- ------------------------------------------------------------------------ */
-        /*                                 single menu                                */
-        /* ------------------------------------------------------------------------- -->
-        <v-list-item
-          v-for="(item, i) in items"
-          v-if="!item.submenus"
-          :key="i"
-          :to="item.to"
-          nuxt
-          router
-          exact
-        >
-          <v-list-item-action class="ml-2">
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-        <!-- ----------------------------------------------------------------------- -->
-
-        <!-- ------------------------------------------------------------------------ */
-        /*                                multiple menu                               */
-        /* ------------------------------------------------------------------------- -->
-        <v-list-group
-          v-for="(item, i) in items"
-          v-if="item.submenus"
-          :key="i"
-          active-class="blue--text"
-          :append-icon="false"
-        >
-          <template #activator>
-            <v-list-item-action class="ml-2" @click="routeTo(item.to)">
+        <div v-for="(item, i) in items" :key="i">
+          <!-- ------------------------------------------------------------------------ */
+          /*                                 single menu                                */
+          /* ------------------------------------------------------------------------- -->
+          <v-list-item v-if="!item.submenus" :to="item.to" nuxt router exact>
+            <v-list-item-action class="ml-2">
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title
-                @click="routeTo(item.to)"
-                v-text="item.title"
-              />
+              <v-list-item-title v-text="item.title" />
             </v-list-item-content>
-          </template>
-
-          <v-list-item
-            v-for="(submenu, j) in item.submenus"
-            :key="j"
-            :to="submenu.to"
-            nuxt
-            router
-            exact
-          >
-            <v-list-item-icon v-if="submenu.icon" class="ml-0 mr-5">
-              <v-icon>{{ submenu.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title
-              :class="[!submenu.icon ? 'mr-5' : 'mr-2']"
-              v-text="submenu.title"
-            />
           </v-list-item>
-        </v-list-group>
-        <!-- ----------------------------------------------------------------------- -->
+          <!-- ----------------------------------------------------------------------- -->
+
+          <!-- ------------------------------------------------------------------------ */
+          /*                                multiple menu                               */
+          /* ------------------------------------------------------------------------- -->
+          <v-list-group
+            v-if="item.submenus"
+            active-class="blue--text"
+            :append-icon="false"
+          >
+            <template #activator>
+              <v-list-item-action class="ml-2" @click="routeTo(item.to)">
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title
+                  @click="routeTo(item.to)"
+                  v-text="item.title"
+                />
+              </v-list-item-content>
+            </template>
+
+            <v-list-item
+              v-for="(submenu, j) in item.submenus"
+              :key="j"
+              :to="submenu.to"
+              nuxt
+              router
+              exact
+            >
+              <v-list-item-icon v-if="submenu.icon" class="ml-0 mr-5">
+                <v-icon>{{ submenu.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title
+                :class="[!submenu.icon ? 'mr-5' : 'mr-2']"
+                v-text="submenu.title"
+              />
+            </v-list-item>
+          </v-list-group>
+          <!-- ----------------------------------------------------------------------- -->
+        </div>
       </v-list>
     </v-navigation-drawer>
 
