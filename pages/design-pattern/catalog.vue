@@ -118,7 +118,7 @@ export default Vue.extend({
     return { bPatterns, cPatterns, sPatterns };
   },
   data: () => ({
-    baseLink: "images/design-pattern",
+    baseLink: "design-pattern",
   }),
 });
 </script>

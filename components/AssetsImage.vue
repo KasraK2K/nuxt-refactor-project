@@ -26,7 +26,7 @@ export default Vue.extend({
 
   computed: {
     assetsImage() {
-      return require(`~/assets/${this.path}`);
+      return require(`~/assets/images/${this.path}`);
     },
   },
 });

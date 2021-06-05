@@ -3,6 +3,7 @@
     <!-- Right Menu -->
     <v-navigation-drawer
       v-model="drawer"
+      v-resize="onResize"
       :mini-variant="miniVariant"
       :clipped="clipped"
       dark
@@ -142,9 +143,15 @@ export default Vue.extend({
     leftDrawer: false,
     title: "نام برنامه",
   }),
+  beforeMount() {
+    if (document.body.clientWidth < 1264) this.drawer = false;
+  },
   methods: {
     routeTo(path: Record<string, unknown>): void {
       this.$router.push(path);
+    },
+    onResize() {
+      if (document.body.clientWidth < 1264) this.drawer = false;
     },
   },
 });
