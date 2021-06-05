@@ -41,11 +41,7 @@
           <!-- ------------------------------------------------------------------------ */
           /*                                multiple menu                               */
           /* ------------------------------------------------------------------------- -->
-          <v-list-group
-            v-if="item.submenus"
-            active-class="blue--text"
-            :append-icon="false"
-          >
+          <v-list-group v-if="item.submenus" active-class="blue--text">
             <template #activator>
               <v-list-item-action class="ml-2" @click="routeTo(item.to)">
                 <v-icon>{{ item.icon }}</v-icon>

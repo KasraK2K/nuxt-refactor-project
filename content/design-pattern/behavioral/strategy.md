@@ -20,4 +20,7 @@ thumbnail: strategy-mini.png
 
 یک الگوی طراحی رفتاری است که به شما امکان می دهد خانواده ای از الگوریتم ها را تعریف کنید ، هر یک از آنها را در یک کلاس جداگانه قرار دهید و آبجکت آنها را جایگزین کنید.
 
-![image info](/images/design-pattern/strategy/structure.png)
+<AssetsImage
+  path="images/design-pattern/strategy/solution.png"
+  max-width-props="570"
+/>

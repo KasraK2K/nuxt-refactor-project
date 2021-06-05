@@ -77,7 +77,9 @@ export default {
         maxAge: 1000 * 60 * 60,
       },
     },
-    customVariables: ["~/assets/scss/variables.scss"],
+    customVariables: [
+      /* "~/assets/scss/variables.scss" */
+    ],
     theme: {
       dark: false,
       default: "light",

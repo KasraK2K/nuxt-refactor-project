@@ -8,7 +8,7 @@
     >
       <article>
         <div class="pa-3 pb-0">
-          <v-img :src="link" />
+          <AssetsImage :path="link" />
         </div>
         <v-card-title class="justify-center">
           <small :class="$vuetify.theme.dark ? 'white--text' : 'black--text'">
