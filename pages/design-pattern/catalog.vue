@@ -96,6 +96,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  name: "Catalog",
+
   asyncData: async ({ app, params }) => {
     const cPatterns = await app
       .$content("design-pattern/creational", params.slug)

@@ -12,6 +12,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  name: "Slug",
+
   asyncData: async ({ app, params }) => {
     const pattern = await app
       .$content("design-pattern/behavioral", params.slug)

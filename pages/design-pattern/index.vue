@@ -4,17 +4,33 @@
     /*                            Show in larg devices                            */
     /* ------------------------------------------------------------------------- -->
     <div v-if="!isMobile">
-      <section class="d-flex flex-column align-center">
-        <h1 class="mb-3 text-center">الگو‌های طراحی</h1>
-        <p class="text-center w-300">
-          <span class="font-weight-bold">الگو‌های طراحی</span>
-          راه حل های معمولی برای مشکلات رایج در طراحی نرم افزار است. هر الگو
-          مانند یک طرح اولیه است که می‌توانید برای حل مشکل خود در یک مورد خاص
-          استفاده کنید.
-        </p>
-      </section>
-
       <div class="d-flex flex-column align-center">
+        <div class="d-flex justify-center" style="max-width: 960px">
+          <AssetsImage
+            path="others/patterns-01.png"
+            max-width-props="280"
+            max-heigh-props="auto"
+            :contain-props="true"
+          />
+
+          <section class="d-flex flex-column align-center">
+            <h1 class="mb-3 text-center">الگو‌های طراحی</h1>
+            <p class="text-center w-300">
+              <span class="font-weight-bold">الگو‌های طراحی</span>
+              راه حل های معمولی برای مشکلات رایج در طراحی نرم افزار است. هر الگو
+              مانند یک طرح اولیه است که می‌توانید برای حل مشکل خود در یک مورد
+              خاص استفاده کنید.
+            </p>
+          </section>
+
+          <AssetsImage
+            path="others/patterns-02.png"
+            max-width-props="265"
+            max-heigh-props="auto"
+            :contain-props="true"
+          />
+        </div>
+
         <div
           class="relative d-flex flex-column align-center"
           style="max-width: 960px"
@@ -52,7 +68,7 @@
                   <v-icon class="ml-1 black--text" large
                     >mdi-shape-outline</v-icon
                   >
-                  <h2 class="mt-5 mb-3">دسته‌بندی</h2>
+                  <h2 class="mt-5 mb-3">دسته‌بندی الگوها</h2>
                 </div>
                 <p class="text-left">
                   الگوهای طراحی از نظر پیچیدگی، سطح جزئیات و مقیاس کاربرد متفاوت
@@ -83,7 +99,7 @@
                   <v-icon class="ml-1 black--text" large
                     >mdi-bookmark-outline</v-icon
                   >
-                  <h2 class="mt-5 mb-3">دسته‌بندی</h2>
+                  <h2 class="mt-5 mb-3">کاتالوگ</h2>
                 </div>
                 <p class="text-center">
                   لیست ۲۲ الگوی طراحی کلاسیک، که دسته‌بندی شده‌اند.
@@ -174,7 +190,120 @@
     <!-- ------------------------------------------------------------------------ */
     /*                               Show in movile                               */
     /* ------------------------------------------------------------------------- -->
-    <div v-if="isMobile"></div>
+    <div v-if="isMobile">
+      <section class="mb-10">
+        <h1 class="mb-3 big text-center">الگو‌های طراحی</h1>
+        <AssetsImage
+          path="others/patterns-i1-2x.png"
+          width-props="256"
+          heigh-props="auto"
+          class-props="mb-3 mx-auto"
+        />
+        <p>
+          <span class="font-weight-bold">الگو‌های طراحی</span>
+          راه حل های معمولی برای مشکلات رایج در طراحی نرم افزار است. هر الگو
+          مانند یک طرح اولیه است که می‌توانید برای حل مشکل خود در یک مورد خاص
+          استفاده کنید.
+        </p>
+        <v-btn color="red" class="white--text" block>الگوی طراحی چیست</v-btn>
+      </section>
+
+      <section class="mb-10">
+        <div class="d-flex">
+          <v-icon class="ml-1 black--text" large>mdi-bookmark-outline</v-icon>
+          <h2 class="mt-5 mb-3">کاتالوگ</h2>
+        </div>
+        <AssetsImage
+          path="others/patterns-i2-2x.png"
+          max-width-props="256"
+          max-heigh-props="auto"
+          class-props="mb-3 mx-auto"
+        />
+        <p>لیست ۲۲ الگوی طراحی کلاسیک، که دسته‌بندی شده‌اند.</p>
+        <v-btn
+          color="red"
+          class="white--text"
+          block
+          @click="$router.push({ name: 'design-pattern-catalog' })"
+          >مشاهده کاتالوگ</v-btn
+        >
+      </section>
+
+      <section class="mb-10">
+        <div class="d-flex">
+          <v-icon class="ml-1 black--text" large>mdi-puzzle-outline</v-icon>
+          <h2 class="mt-5 mb-3">فواید الگوها</h2>
+        </div>
+        <AssetsImage
+          path="others/patterns-i3-2x.png"
+          max-width-props="256"
+          max-heigh-props="auto"
+          class-props="mb-3 mx-auto"
+        />
+        <p>
+          الگوها مجموعه‌ای از راه حل‌های رایج در طراحی نرم افزار هستند. آنها
+          زبان مشترکی تعریف می کنند که به تیم شما در ارتباط موثرتر کمک می کند.
+        </p>
+        <v-btn color="red" class="white--text" block>فواید الگوها</v-btn>
+      </section>
+
+      <section class="mb-10">
+        <div class="d-flex">
+          <v-icon class="ml-1 black--text" large>mdi-shape-outline</v-icon>
+          <h2 class="mt-5 mb-3">دسته‌بندی الگوها</h2>
+        </div>
+        <AssetsImage
+          path="others/patterns-i4-2x.png"
+          max-width-props="256"
+          max-heigh-props="auto"
+          class-props="mb-3 mx-auto"
+        />
+        <p>
+          الگوهای طراحی از نظر پیچیدگی، سطح جزئیات و مقیاس کاربرد متفاوت هستند.
+          علاوه بر این، آنها را می توان بر اساس قصد آنها به سه گروه دسته بندی
+          کرد.
+        </p>
+        <v-btn color="red" class="white--text" block>دسته‌بندی</v-btn>
+      </section>
+
+      <section class="mb-10">
+        <div class="d-flex">
+          <v-icon class="ml-1 black--text" large>mdi-timer-sand</v-icon>
+          <h2 class="mt-5 mb-3">تاریخچه الگوها</h2>
+        </div>
+        <AssetsImage
+          path="others/patterns-i5-2x.png"
+          max-width-props="256"
+          max-heigh-props="auto"
+          class-props="mb-3 mx-auto"
+        />
+        <p class="mb-0">چه کسی و چه زمانی الگوها را اختراع کرد؟</p>
+        <p class="mb-0">
+          آیا می توانید از الگوها خارج از نرم‌افزار استفاده کنید؟
+        </p>
+        <p>چطوری این کار را انجام میدهید؟</p>
+        <v-btn color="red" class="white--text" block>تاریخچه الگوها</v-btn>
+      </section>
+
+      <section class="mb-10">
+        <div class="d-flex">
+          <v-icon class="ml-1 black--text" large
+            >mdi-heart-broken-outline</v-icon
+          >
+          <h2 class="mt-5 mb-3">نقد الگوها</h2>
+        </div>
+        <AssetsImage
+          path="others/patterns-i6-2x.png"
+          max-width-props="256"
+          max-heigh-props="auto"
+          class-props="mb-3 mx-auto"
+        />
+        <p class="mb-0">آیا الگوها به اندازه تبلیغات خوب هستند؟</p>
+        <p class="mb-0">آیا همیشه می توان از آنها استفاده کرد؟</p>
+        <p>آیا الگوها بعضی اوقات می توانند مضر باشند؟</p>
+        <v-btn color="red" class="white--text" block>تاریخچه الگوها</v-btn>
+      </section>
+    </div>
   </v-container>
 </template>
 
@@ -182,6 +311,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  name: "DesignPattern",
+
   data: () => ({
     isMobile: false,
   }),

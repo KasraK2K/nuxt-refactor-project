@@ -7,8 +7,8 @@
       :clipped="clipped"
       dark
       fixed
-      :right="!isMobile"
-      :bottom="isMobile"
+      right
+      bottom
       app
     >
       <template #prepend>
@@ -113,7 +113,6 @@ export default Vue.extend({
   data: () => ({
     clipped: false,
     drawer: true,
-    isMobile: false,
     fixed: false,
     items: [
       {
@@ -145,10 +144,7 @@ export default Vue.extend({
     title: "نام برنامه",
   }),
   beforeMount() {
-    if (document.body.clientWidth < 1264) {
-      this.drawer = false;
-      this.isMobile = true;
-    }
+    if (document.body.clientWidth < 1264) this.drawer = false;
   },
   methods: {
     routeTo(path: Record<string, unknown>): void {

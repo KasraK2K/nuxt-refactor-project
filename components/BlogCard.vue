@@ -24,6 +24,8 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  name: "BlogCard",
+
   props: {
     maxWidthProp: { type: String, default: "120" },
     link: { type: String, required: true },

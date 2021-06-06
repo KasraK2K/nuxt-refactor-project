@@ -6,6 +6,8 @@
     :max-width="maxWidthProps"
     :height="heightProps"
     :max-height="maxHeightProps"
+    :contain="containProps"
+    :style="styleProps"
   />
 </template>
 
@@ -22,6 +24,8 @@ export default Vue.extend({
     maxWidthProps: { type: String, default: "" },
     heightProps: { type: String, default: "" },
     maxHeightProps: { type: String, default: "" },
+    containProps: { type: Boolean, default: false },
+    styleProps: { type: String, default: "" },
   },
 
   computed: {
