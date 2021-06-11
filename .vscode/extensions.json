@@ -1,7 +1,8 @@
 {
     "recommendations": [
         "helgardrichard.helium-icon-theme",
-        "octref.vetur",
-        "dariofuzinato.vue-peek"
+        "dariofuzinato.vue-peek",
+        "tabnine.tabnine-vscode",
+        "octref.vetur"
     ]
 }

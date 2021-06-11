@@ -6,7 +6,7 @@
     <div v-if="!isMobile">
       <div class="d-flex flex-column align-center">
         <div
-          class="relative d-flex flex-column align-center"
+          class="relative d-flex flex-column align-center black--text"
           style="max-width: 960px"
         >
           <AssetsImage
@@ -17,21 +17,23 @@
           />
 
           <section class="absolute absolute-center-top">
-            <h1 class="mb-3 text-center">الگو‌های طراحی</h1>
-            <p class="text-center w-300 mb-1">
-              <span class="font-weight-bold">الگو‌های طراحی</span>
-              راه حل های معمولی برای مشکلات رایج در طراحی نرم افزار است. هر الگو
-              مانند یک طرح اولیه است که می‌توانید برای حل مشکل خود در یک مورد
-              خاص استفاده کنید.
-            </p>
-            <div class="panel">
+            <div class="panel pa-2 mb-2">
+              <h1 class="mb-3 text-center">الگو‌های طراحی</h1>
+              <p class="text-center w-300 mb-1">
+                <span class="font-weight-bold">الگو‌های طراحی</span> راه حل های
+                معمولی برای مشکلات رایج در طراحی نرم افزار است. هر الگو مانند یک
+                طرح اولیه است که می‌توانید برای حل مشکل خود در یک مورد خاص
+                استفاده کنید.
+              </p>
+            </div>
+            <div class="panel pa-2">
               <v-btn color="red" class="white--text" block>فواید الگوها</v-btn>
             </div>
           </section>
         </div>
 
         <div
-          class="relative d-flex flex-column align-center"
+          class="relative d-flex flex-column align-center black--text"
           style="max-width: 960px"
         >
           <AssetsImage
@@ -85,7 +87,7 @@
         </div>
 
         <div
-          class="relative d-flex flex-column align-center"
+          class="relative d-flex flex-column align-center black--text"
           style="max-width: 960px"
         >
           <AssetsImage
@@ -120,7 +122,7 @@
         </div>
 
         <div
-          class="relative d-flex flex-column align-center"
+          class="relative d-flex flex-column align-center black--text"
           style="max-width: 960px"
         >
           <AssetsImage
@@ -131,7 +133,7 @@
         </div>
 
         <div
-          class="relative d-flex justify-space-between"
+          class="relative d-flex justify-space-between black--text"
           style="max-width: 960px"
         >
           <AssetsImage
@@ -209,7 +211,7 @@
 
       <section class="mb-10">
         <div class="d-flex">
-          <v-icon class="ml-1 black--text" large>mdi-bookmark-outline</v-icon>
+          <v-icon class="ml-1" large>mdi-bookmark-outline</v-icon>
           <h2 class="mt-5 mb-3">کاتالوگ</h2>
         </div>
         <AssetsImage
@@ -230,7 +232,7 @@
 
       <section class="mb-10">
         <div class="d-flex">
-          <v-icon class="ml-1 black--text" large>mdi-puzzle-outline</v-icon>
+          <v-icon class="ml-1" large>mdi-puzzle-outline</v-icon>
           <h2 class="mt-5 mb-3">فواید الگوها</h2>
         </div>
         <AssetsImage
@@ -248,7 +250,7 @@
 
       <section class="mb-10">
         <div class="d-flex">
-          <v-icon class="ml-1 black--text" large>mdi-shape-outline</v-icon>
+          <v-icon class="ml-1" large>mdi-shape-outline</v-icon>
           <h2 class="mt-5 mb-3">دسته‌بندی الگوها</h2>
         </div>
         <AssetsImage
@@ -267,7 +269,7 @@
 
       <section class="mb-10">
         <div class="d-flex">
-          <v-icon class="ml-1 black--text" large>mdi-timer-sand</v-icon>
+          <v-icon class="ml-1" large>mdi-timer-sand</v-icon>
           <h2 class="mt-5 mb-3">تاریخچه الگوها</h2>
         </div>
         <AssetsImage
@@ -286,9 +288,7 @@
 
       <section class="mb-10">
         <div class="d-flex">
-          <v-icon class="ml-1 black--text" large
-            >mdi-heart-broken-outline</v-icon
-          >
+          <v-icon class="ml-1" large>mdi-heart-broken-outline</v-icon>
           <h2 class="mt-5 mb-3">نقد الگوها</h2>
         </div>
         <AssetsImage
@@ -332,7 +332,7 @@ export default Vue.extend({
   font-size: 3rem;
 }
 .w-300 {
-  width: 300px;
+  max-width: 300px;
 }
 .relative {
   position: relative;
@@ -350,27 +350,32 @@ export default Vue.extend({
 .absolute-right-top {
   right: 0;
   top: 0;
+  z-index: 3;
 }
 .absolute-left-top {
   left: 0;
   top: 0;
+  z-index: 3;
 }
 .absolute-right-center {
   right: 0;
+  z-index: 1;
 }
 .absolute-left-center {
   left: 0;
+  z-index: 1;
 }
 .absolute-center-center {
   right: 50%;
   top: 33%;
   transform: translate(50%, 33%);
+  z-index: 2;
 }
 .absolute-center-top {
   right: 50%;
   top: 0%;
   transform: translate(50%, 0%);
-  z-index: 2;
+  z-index: 4;
 }
 .absolute-right-bottom {
   right: 0;
@@ -380,10 +385,16 @@ export default Vue.extend({
   left: 0;
   bottom: 0;
 }
-@media only screen and (min-width: 1264px) {
-  .absolute-center-top {
-    top: 5%;
-    transform: translate(50%, 5%);
+@media only screen and (max-width: 1264px) {
+  .absolute-right-top,
+  .absolute-left-top {
+    top: 8%;
+    transform: translateY(8%);
+  }
+  .absolute-center-center {
+    right: 50%;
+    top: 39%;
+    transform: translate(50%, 39%);
   }
 }
 </style>

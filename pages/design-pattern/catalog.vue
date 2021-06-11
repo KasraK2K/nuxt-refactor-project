@@ -81,7 +81,7 @@
             class="flex-grow-0"
           >
             <BlogCard
-              max-width-prop="120"
+              max-width-prop="145"
               :data="bPattern"
               :link="`${baseLink}/${bPattern.slug}/${bPattern.thumbnail}`"
             />

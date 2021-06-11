@@ -3,6 +3,8 @@
     <v-breadcrumbs :nuxt="true" :items="breadcrumbs"></v-breadcrumbs>
 
     <article class="mt-6">
+      <h1 class="h1 mb-6">{{ pattern.title }}</h1>
+
       <nuxt-content :document="pattern" />
     </article>
   </div>
@@ -49,3 +51,14 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.h1 {
+  font-size: 3.5rem;
+  font-weight: black;
+}
+.h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+</style>
