@@ -112,9 +112,6 @@ import Vue from "vue";
 const title = "نام برنامه";
 
 export default Vue.extend({
-  head: {
-    titleTemplate: `%s - ${title}`,
-  },
   data: () => ({
     clipped: false,
     drawer: true,
@@ -148,6 +145,11 @@ export default Vue.extend({
     leftDrawer: false,
     title,
   }),
+  head() {
+    return {
+      titleTemplate: `%s - ${title}`,
+    };
+  },
   beforeMount() {
     if (document.body.clientWidth < 1264) this.drawer = false;
   },

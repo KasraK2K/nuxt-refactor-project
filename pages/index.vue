@@ -21,7 +21,6 @@ export default Vue.extend({
 });
 </script>
 
-
 <style lang="scss">
 pre {
   direction: ltr;
