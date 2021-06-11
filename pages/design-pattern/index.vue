@@ -5,30 +5,29 @@
     /* ------------------------------------------------------------------------- -->
     <div v-if="!isMobile">
       <div class="d-flex flex-column align-center">
-        <div class="d-flex justify-center" style="max-width: 960px">
+        <div
+          class="relative d-flex flex-column align-center"
+          style="max-width: 960px"
+        >
           <AssetsImage
-            path="others/patterns-01.png"
-            max-width-props="280"
+            path="others/patterns-01-02.png"
+            max-width-props="100%"
             max-heigh-props="auto"
             :contain-props="true"
           />
 
-          <section class="d-flex flex-column align-center">
+          <section class="absolute absolute-center-top">
             <h1 class="mb-3 text-center">الگو‌های طراحی</h1>
-            <p class="text-center w-300">
+            <p class="text-center w-300 mb-1">
               <span class="font-weight-bold">الگو‌های طراحی</span>
               راه حل های معمولی برای مشکلات رایج در طراحی نرم افزار است. هر الگو
               مانند یک طرح اولیه است که می‌توانید برای حل مشکل خود در یک مورد
               خاص استفاده کنید.
             </p>
+            <div class="panel">
+              <v-btn color="red" class="white--text" block>فواید الگوها</v-btn>
+            </div>
           </section>
-
-          <AssetsImage
-            path="others/patterns-02.png"
-            max-width-props="265"
-            max-heigh-props="auto"
-            :contain-props="true"
-          />
         </div>
 
         <div
@@ -333,7 +332,7 @@ export default Vue.extend({
   font-size: 3rem;
 }
 .w-300 {
-  max-width: 300px;
+  width: 300px;
 }
 .relative {
   position: relative;
@@ -367,6 +366,12 @@ export default Vue.extend({
   top: 33%;
   transform: translate(50%, 33%);
 }
+.absolute-center-top {
+  right: 50%;
+  top: 0%;
+  transform: translate(50%, 0%);
+  z-index: 2;
+}
 .absolute-right-bottom {
   right: 0;
   bottom: 0;
@@ -374,5 +379,11 @@ export default Vue.extend({
 .absolute-left-bottom {
   left: 0;
   bottom: 0;
+}
+@media only screen and (min-width: 1264px) {
+  .absolute-center-top {
+    top: 5%;
+    transform: translate(50%, 5%);
+  }
 }
 </style>

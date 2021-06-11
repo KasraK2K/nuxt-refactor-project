@@ -109,7 +109,12 @@
 <script lang="ts">
 import Vue from "vue";
 
+const title = "نام برنامه";
+
 export default Vue.extend({
+  head: {
+    titleTemplate: `%s - ${title}`,
+  },
   data: () => ({
     clipped: false,
     drawer: true,
@@ -141,7 +146,7 @@ export default Vue.extend({
     miniVariant: false,
     left: true,
     leftDrawer: false,
-    title: "نام برنامه",
+    title,
   }),
   beforeMount() {
     if (document.body.clientWidth < 1264) this.drawer = false;
